@@ -23,6 +23,7 @@ def search_web(query: str) -> Dict[str, Any]:
     return results
 
 
+
 # Resources - provide access to langchain-ai repo files
 @mcp.resource("github://langchain-ai/langchain-mcp-adapters/main/README.md")
 def github_file():
