@@ -27,8 +27,17 @@ Return recipe suggestions and eventually the recipe instructions to the user, if
 
 from langchain.agents import create_agent
 
+import os 
+from langchain_openai import AzureChatOpenAI
+
+model = AzureChatOpenAI(
+    azure_deployment=os.getenv("OPENAI_DEFAULT_DEPLOYMENT"),  # or your deployment
+    api_version="2025-04-01-preview",  # or your api version
+    azure_endpoint=os.getenv("OPENAI_ENDPOINT"),  # or your endpoint
+)
+
 agent = create_agent(
-    model="gpt-5-nano",
+    model=model,
     tools=[web_search],
     system_prompt=system_prompt
 )
